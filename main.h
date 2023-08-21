@@ -1,3 +1,5 @@
+#ifndef MAIN_H
+#define MAIN_H
 typedef struct special
 {
 	char *op;
@@ -12,3 +14,5 @@ void op_bin(unsigned int a);
 void hex_int(unsigned int a);
 void oct_int(unsigned int a);
 void un_int(unsigned int a);
+
+#endif

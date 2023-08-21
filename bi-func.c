@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdlib.h>
+#include <unistd.h>
 
 void op_bin(unsigned int a)
 {
@@ -37,4 +38,15 @@ void hex_int(unsigned int a)
 		hex_int(a / 16);
 		paste(a % 16 + '0');
 	}
+}
+
+/**
+ * paste - a function to print a character to the standard output stream.
+ * @a: a string passed to function
+ *
+ * Return:return an standard output stream
+ */
+void paste(char a)
+{
+	write(1, &a, 1);
 }
