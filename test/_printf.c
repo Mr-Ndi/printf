@@ -36,6 +36,8 @@ int _printf(const char *format, ...)
 				paste(format[i]);
 				t += 1;
 			}
+			else if (format[i] == 'p')
+				address(va_arg(specials, void *));
 			else if (format[i] == 'b')
 				op_bin(va_arg(specials, unsigned int));
 			else if (format[i] == 'x')
@@ -84,16 +86,15 @@ void op_int(int a)
 }
 void un_int(unsigned int a)
 {
-	if (a < 0)
-	{
-		paste('-');
-		a *= -1;
-	}
 	if (a == 0)
 		paste('0');
-	if (a / 10 != 0)
+	else if (a / 10 != 0)
+	{
 		un_int(a / 10);
-	paste('0' + a % 10);
+		paste('0' + a % 10);
+	}
+	else
+		paste('0' + a);
 }
 
 void paste(char a)
