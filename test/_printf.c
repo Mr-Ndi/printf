@@ -4,14 +4,25 @@
 #include <stdarg.h>
 #include "main.h"
 
+int _printf(const char *format, ...);
 void op_string(char *str);
 void op_char(char a);
 void paste(char a);
+
+/**
+ * _printf - a function to handle s, c, d and %
+ * @format:Format string containing conversion specifiers
+ * @...:Additional arguments corresponding to conversion specifiers
+ *
+ * Return: a string
+ */
 int _printf(const char *format, ...)
 {
 	int i, t = 0;
 	va_list specials;
+
 	va_start(specials, format);
+
 
 	for (i = 0; format[i] != '\0'; )
 	{
@@ -36,8 +47,8 @@ int _printf(const char *format, ...)
 				paste(format[i]);
 				t += 1;
 			}
-			else if (format[i] == 'p')
-				address(va_arg(specials, void *));
+
+
 			else if (format[i] == 'b')
 				op_bin(va_arg(specials, unsigned int));
 			else if (format[i] == 'x')
@@ -59,10 +70,28 @@ int _printf(const char *format, ...)
 	i -= t;
 	return (i);
 }
+
+
+/**
+ * op_char - a function that is  used to print a single character
+ * @a: a string to be returned
+ * @...:Additional arguments corresponding to conversion specifiers
+ *
+ * Return: a string
+ */
 void op_char(char a)
 {
 	paste(a);
 }
+
+
+/**
+ * op_string - a function to print a character to the standard output stream
+ * @str:a string to be returned
+ * @...:Additional arguments corresponding to conversion specifiers
+ *
+ * Return:return a string
+ */
 void op_string(char *str)
 {
 	while (*str != '\0')
@@ -71,6 +100,15 @@ void op_string(char *str)
 		str++;
 	}
 }
+
+/**
+ * op_int - a function that  is used to print an integer.
+ * @...:Additional arguments corresponding to conversion specifiers
+ * @a: a string passed to a function
+ *
+ * Return:return an integer
+ */
+
 void op_int(int a)
 {
 	if (a < 0)
@@ -84,6 +122,16 @@ void op_int(int a)
 		op_int(a / 10);
 	paste('0' + a % 10);
 }
+
+
+/**
+ * un_int - a function that  is used to an  print an unsigned integer.
+ * @...:Additional arguments corresponding to conversion specifiers
+ * @a: a string passed to function
+ *
+ * Return:return an integer
+ */
+
 void un_int(unsigned int a)
 {
 	if (a == 0)
@@ -97,6 +145,13 @@ void un_int(unsigned int a)
 		paste('0' + a);
 }
 
+/**
+ * paste - a function to print a character to the standard output stream.
+ * @...:Additional arguments corresponding to conversion specifiers
+ * @a: a string passed to function
+ *
+ * Return:return an standard output stream
+ */
 void paste(char a)
 {
 	write(1, &a, 1);
