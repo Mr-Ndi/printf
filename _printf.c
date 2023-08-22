@@ -4,6 +4,8 @@
 #include <stdarg.h>
 #include "main.h"
 
+int length = 0;
+
 int _printf(const char *format, ...);
 void op_string(char *str);
 void op_char(char a);
@@ -24,6 +26,7 @@ int _printf(const char *format, ...)
 	va_start(specials, format);
 
 
+	length = 0;
 	for (i = 0; format[i] != '\0'; )
 	{
 		if (format[i] == '%')
@@ -72,20 +75,19 @@ int _printf(const char *format, ...)
 	}
 	va_end(specials);
 	i -= t;
-	return (i);
+	return (length);
 }
 
-
 /**
- * op_char - a function that is  used to print a single character
- * @a: a string to be returned
- * @...:Additional arguments corresponding to conversion specifiers
+ * paste - a function to print a character to the standard output stream.
+ * @a: a string passed to function
  *
- * Return: a string
+ * Return:return an standard output stream
  */
-void op_char(char a)
+void paste(char a)
 {
-	paste(a);
+	write(1, &a, 1);
+	length ++;
 }
 
 

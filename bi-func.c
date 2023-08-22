@@ -44,12 +44,13 @@ void hex_int(unsigned int a, int alpha)
 }
 
 /**
- * paste - a function to print a character to the standard output stream.
- * @a: a string passed to function
+ * op_char - a function that is  used to print a single character
+ * @a: a string to be returned
+ * @...:Additional arguments corresponding to conversion specifiers
  *
- * Return:return an standard output stream
+ * Return: a string
  */
-void paste(char a)
+void op_char(char a)
 {
-	write(1, &a, 1);
+	paste(a);
 }
