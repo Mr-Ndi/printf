@@ -1,3 +1,11 @@
+# ifndef MAIN_H
+# define MAIN_H
+
+/**
+ * struct special - a structure that has 2 members
+ * @op: a string
+ * @f: a pointer to a function that returns int
+ */
 typedef struct special
 {
 	char *op;
@@ -13,3 +21,5 @@ void hex_int(unsigned int a, int alpha);
 void oct_int(unsigned int a);
 void un_int(unsigned int a);
 void address(void *a);
+
+# endif
