@@ -22,9 +22,12 @@ void oct_int(unsigned int a)
 		paste(a % 8 + '0');
 	}
 }
-void hex_int(unsigned int a)
+void hex_int(unsigned int a, int alpha)
 {
 	char *let = "abcdef";
+
+	if (alpha == 1)
+		let = "ABCDEF";
 
 	if (a < 16)
 	{
@@ -35,7 +38,7 @@ void hex_int(unsigned int a)
 	}
 	else
 	{
-		hex_int(a / 16);
+		hex_int(a / 16, alpha);
 		paste(a % 16 + '0');
 	}
 }

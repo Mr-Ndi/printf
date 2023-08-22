@@ -18,7 +18,7 @@ void paste(char a);
  */
 int _printf(const char *format, ...)
 {
-	int i, t = 0;
+	int i, t = 0, a = 0;
 	va_list specials;
 
 	va_start(specials, format);
@@ -51,8 +51,12 @@ int _printf(const char *format, ...)
 
 			else if (format[i] == 'b')
 				op_bin(va_arg(specials, unsigned int));
-			else if (format[i] == 'x')
-				hex_int(va_arg(specials, unsigned int));
+			else if (format[i] == 'x' || format[i] == 'X')
+			{
+				if (format[i] == 'X')
+					a = 1;
+				hex_int(va_arg(specials, unsigned int), a);
+			}
 			else if (format[i] == 'o')
 				oct_int(va_arg(specials, unsigned int));
 			else
@@ -143,16 +147,4 @@ void un_int(unsigned int a)
 	}
 	else
 		paste('0' + a);
-}
-
-/**
- * paste - a function to print a character to the standard output stream.
- * @...:Additional arguments corresponding to conversion specifiers
- * @a: a string passed to function
- *
- * Return:return an standard output stream
- */
-void paste(char a)
-{
-	write(1, &a, 1);
 }
