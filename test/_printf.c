@@ -9,6 +9,10 @@ void op_string(char *str);
 void op_char(char a);
 void paste(char a);
 
+int length = 0;
+/**
+ * global variable length of the printf() output.
+*/
 /**
  * _printf - a function to handle s, c, d and %
  * @format:Format string containing conversion specifiers
@@ -72,7 +76,7 @@ int _printf(const char *format, ...)
 	}
 	va_end(specials);
 	i -= t;
-	return (i);
+	return (length);
 }
 
 

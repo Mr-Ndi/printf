@@ -16,5 +16,5 @@ void hex_int(unsigned int a, int alpha);
 void oct_int(unsigned int a);
 void un_int(unsigned int a);
 void address(void *a);
-
+void rev_str(char *str);
 #endif
