@@ -26,6 +26,8 @@ int _printf(const char *format, ...)
 	va_start(specials, format);
 
 
+	if (format == NULL)
+		return (0);
 	length = 0;
 	for (i = 0; format[i] != '\0'; )
 	{
@@ -50,8 +52,8 @@ int _printf(const char *format, ...)
 				paste(format[i]);
 				t += 1;
 			}
-
-
+			else if (format[i] == 'p')
+				address(va_arg(specials, void *));
 			else if (format[i] == 'b')
 				op_bin(va_arg(specials, unsigned int));
 			else if (format[i] == 'x' || format[i] == 'X')
@@ -60,6 +62,8 @@ int _printf(const char *format, ...)
 					a = 1;
 				hex_int(va_arg(specials, unsigned int), a);
 			}
+			else if (format[i] == 'r')
+				rev_str(va_arg(specials, char *));
 			else if (format[i] == 'o')
 				oct_int(va_arg(specials, unsigned int));
 			else
@@ -100,6 +104,8 @@ void paste(char a)
  */
 void op_string(char *str)
 {
+	if (str == NULL)
+		_printf("(null)");
 	while (*str != '\0')
 	{
 		paste(*str);
