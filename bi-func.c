@@ -39,7 +39,7 @@ void hex_int(unsigned int a, int alpha)
 	else
 	{
 		hex_int(a / 16, alpha);
-		paste(a % 16 + '0');
+		hex_int(a % 16, alpha);
 	}
 }
 

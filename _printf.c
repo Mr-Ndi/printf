@@ -128,8 +128,8 @@ void op_int(int a)
 		paste('-');
 		a *= -1;
 	}
-	if (a == 0)
-		paste('0');
+/*	if (a == 0)
+		paste('0');*/
 	if (a / 10 != 0)
 		op_int(a / 10);
 	paste('0' + a % 10);

@@ -2,8 +2,14 @@
 #include "main.h"
 int main(void)
 {
-	int len, len1;
+	/*
+	int len, len1;*/
 
+	_printf("_printf 0: %d\n", 0);
+	printf("printf 0: %d\n", 0);
+	printf("printf hexadecimal 255: %x\n", 255);
+	_printf("_printf hexadecimal 255: %x\n", 255);
+	/**
 	len = _printf("12345678[%%] %%\n");
 	len1 = printf("12345678[%%] %%\n");
 	_printf("Lenth of the mod string: [%d]\n", len);
@@ -16,5 +22,6 @@ int main(void)
 	_printf("testing the bjnary function");
 	_printf("10 in binary is: %b\n", 10);
 	_printf("reversing the string : %r\n", "string");
-	printf("reversing the string : %r\n", "string")
+	printf("reversing the string : %r\n", "string");
+	*/
 }
